@@ -1,14 +1,14 @@
 {
   "name": "entreprenerd-demo-math",
-  "version": "1.0.2",
-  "main": "/lib/index.js",
+  "version": "1.0.3",
+  "main": "lib/index.js",
   "license": "MIT",
   "scripts": {
     "tsc": "tsc",
     "build": "tsc",
     "test": "jest",
     "doc": "tsc && jsdoc -c ./.jsdoc.json",
-    "release": "tsc && cd /lib && yarn publish"
+    "release": "tsc && yarn publish"
   },
   "dependencies": {
     "@types/jest": "^26.0.20",
