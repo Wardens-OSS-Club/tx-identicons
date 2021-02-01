@@ -4,13 +4,17 @@
   "main": "lib/index.js",
   "license": "MIT",
   "scripts": {
-    "tsc": "tsc",
     "build": "tsc",
     "test": "jest",
-    "doc": "tsc && jsdoc -c ./.jsdoc.json",
-    "release": "tsc && yarn publish"
+    "lint": "eslint src/. --ext ts --ext tsx --ext js",
+    "lint:fix": "eslint src/. --ext ts --ext tsx --ext js --fix",
+    "doc": "tsc && jsdoc -c ./.jsdoc.json"
   },
   "dependencies": {
+  },
+  "devDependencies": {
+    "husky": "^4.3.8",
+    "ts-jest": "^26.4.4",
     "@types/jest": "^26.0.20",
     "eslint": "^7.18.0",
     "eslint-config-airbnb-typescript-prettier": "^4.1.0",
@@ -18,8 +22,5 @@
     "jsdoc": "^3.6.6",
     "prettier": "^2.2.1",
     "typescript": "^4.1.3"
-  },
-  "devDependencies": {
-    "ts-jest": "^26.4.4"
   }
 }
