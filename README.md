@@ -1,28 +1,33 @@
-# The Math Package
+# Typescript Package Starter
 
-This math package will be used to build an ecommerce
+A starter template to start your package with typescript
 
-Having a math package allows you to reuse the code in both frontend and backend
+It uses typescript, eslint and jest
 
-You can also unit test this code, which is most likely the most important code you're writing
-
-## Installation
-`yarn add entreprenerd-demo-math`
+TS: Easy coding
+EsLint: Easy Formatting
+Jest: Confident Testing
+JSDoc: Free Documentation (as long as you add comments)
 
 ## Usage
-```javascript
-const { getPrice } = require("entreprenerd-demo-math");
-const price = getPrice({price: 1})
-console.log("price", price)
-```
 
-## Methods
+Use it as template
 
-### getPrice(product)
-Given a product, return it's price
+Build your own stuff
 
-### getQuantity(product)
-Given a product in a cart, return it's quantity
+## Scripts
 
-### getTotal(cart)
-Given a cart, return the total cost of the products it contains
+### build
+Build the package with TS
+
+### test
+Run jest on your test files
+
+### lint
+Lint your files
+
+### lint:fix
+Lint and fix what can be fixed
+
+### doc
+Generate docs with JsDoc

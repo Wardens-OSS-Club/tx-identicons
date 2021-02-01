@@ -1,5 +1,11 @@
 {
-  "name": "entreprenerd-demo-math",
+  "name": "typescript-package-starter",
+  "description": "A simple Typescript template to start your package",
+  "author": {
+    "name": "Alex The Entreprenerd",
+    "url": "https://github.com/GalloDaSballo",
+    "email": "alex@entreprenerd.xyz"
+  },
   "version": "1.1.0",
   "main": "lib/index.js",
   "license": "MIT",
