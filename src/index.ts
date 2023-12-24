@@ -1,4 +1,4 @@
-import { defaultAbiCoder, keccak256, solidityKeccak256 } from "ethers/lib/utils";
+import { defaultAbiCoder, keccak256 } from "ethers/lib/utils";
 import { toSvg } from "jdenticon";
 import fromTargetAndCalldataToHash from "./fromCalldataAndAbi";
 
