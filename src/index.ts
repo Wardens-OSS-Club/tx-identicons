@@ -1,5 +1,6 @@
 import { defaultAbiCoder, keccak256, solidityKeccak256 } from "ethers/lib/utils";
 import { toSvg } from "jdenticon";
+import fromTargetAndCalldataToHash from "./fromCalldataAndAbi";
 
 
 // From Metamask to The whole thing
@@ -22,17 +23,5 @@ console.log(svgString);
 console.log(keccak256(defaultAbiCoder.encode(["address"], ["0x3Fa73f1E5d8A792C80F426fc8F84FBF7Ce9bBCAC"])))
 
 
-// TODO: Encoding
-// https://github.com/ethers-io/ethers.js/issues/718
 
-/**
- * /home/ethers> ethers
-homestead> ethers.utils.defaultAbiCoder.encode([ "string", "string" ], [ "Hello", "world" ])
-'0x00000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000548656c6c6f0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005776f726c64000000000000000000000000000000000000000000000000000000'
-homestead> ethers.utils.keccak256(ethers.utils.defaultAbiCoder.encode([ "string", "string" ], [ "Hello", "world" ]))
-'0x5ac989f52ea4c399343f6c0cf5a4810fc1bdac5773de37ca0cd0a8287f75a5c6'
- * 
- */
-
-// Then replace each encoded "thingy" that is unitary type, that is not an addy, as keccak of 0
-// Pretty comfy
+console.log(fromTargetAndCalldataToHash("0x3Fa73f1E5d8A792C80F426fc8F84FBF7Ce9bBCAC", "0x282d3fdf000000000000000000000000b1c05e80678bbcdf8fbca2b4820164313e4867d6000000000000000000000000000000000000000000000034f69370b524873a1f", ["function lock(address _account, uint256 _amount) external"]))

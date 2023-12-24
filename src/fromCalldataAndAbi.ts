@@ -1,10 +1,11 @@
-import { Interface, ParamType, keccak256 } from "ethers/lib/utils";
+import { Interface, ParamType, keccak256, solidityKeccak256 } from "ethers/lib/utils";
 import { ZERO_HASH } from "./constants";
+import hashAddress from "./keccak";
 
 
 type TODO = any
 
-export default function fromTargetAndCalldataToHash(address: string, calldata: string, abiLike: any): TODO {
+export default function fromTargetAndCalldataToHash(target: string, calldata: string, abiLike: any): string {
   // SEE: https://github.com/ethers-io/ethers.js/issues/366#issuecomment-444384084
   // Basically just abi.deconding it back
   let iface = new Interface(abiLike);
@@ -16,31 +17,47 @@ export default function fromTargetAndCalldataToHash(address: string, calldata: s
   let encodedParams = [] // keccak(encodeParam)
   // From parsed apply the algo
   parsed.args // We have to recursively apply the system // Either it's an hash (directly), or it's the hash of 0, or it's the result from a recursive call
-  parsed.args.map((argument, counter) => {
+  parsed.functionFragment.inputs.forEach((inputData: ParamType) => {
+
     // For each argument, encode argument
     // All arguments are encoded as
-      parsed.functionFragment.inputs.map(inputFromFunction => ) // TODO: WE have types from here
+    // Always double iteration
+    // Figure out convention for what leads, then re-apply to the function below
+    const argument = parsed.args[inputData.name]
+    encodedParams.push(encodeInput(inputData, argument))
   })
+
+  const hashedParams = solidityKeccak256(["bytes32[]"], [encodedParams])
+
+  console.log("parsed.args", parsed.args)
+  console.log("encodedParams", encodedParams)
+  return encodeFromParsed(target, parsed.sighash, hashedParams)
 }
 
 
-function encodeInput(inputDefinition: ParamType, argument: any) {
+// NOTE: By definition we encode all arrays of non addresses as zero hashes
+// This MAY be changed by just skipping those
+// That said, this is easier to generalize this way
+function encodeInput(input: ParamType, value: string | string[]) {
+
   /// RECURSIVE CASES ///
   // For each etc...
   // For Each of them we have to iterate
   // So we gotta do more recursive calls
-  if(inputDefinition.baseType == "tuple") {
-    return argument.map() // TODO:
+  if(input.baseType == "tuple") {
+    // If this is the case, then the values are inputs of the tuple, all we have to do is recursively iterate the tuple
+    return (value as string[]).map((entry, counter) => encodeInput(input.components[counter], entry))
   }
 
-  if(inputDefinition.baseType == "array") {
-    return argument.map() // TODO:
+  if(input.baseType == "array") {
+    // If this is the case, then value is a list
+    return (value as string[]).map(entry => encodeInput(input.arrayChildren, entry))
   }
 
   /// BASE CASES ///
-  if(inputDefinition.baseType == "address") {
+  if(input.baseType == "address") {
     // This is an address, we hash
-    return keccak256(argument)
+    return keccak256(value as string)
   }
 
   // return hash of 0 since this is not triggering the recursion nor is an address
@@ -71,6 +88,9 @@ function encodeInput(inputDefinition: ParamType, argument: any) {
 
 // I need
 
-function encodeFromParsed(target: string, selector: string, hashedInput: string): string {
+function encodeFromParsed(target: string, selector: string, hashedInput: string) {
   // We just keccak these 3 into one
+  // Selector is correctly packed
+  // Hashed input is already 32 bytes
+  return solidityKeccak256(["bytes32", "bytes4", "bytes32"], [hashAddress(target), selector, hashedInput])
 }
