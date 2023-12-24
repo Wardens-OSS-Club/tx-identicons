@@ -1,0 +1,3 @@
+- Reference Solidity vs TS test for common operation
+- Show usage against a few common operations (e.g. Uniswap USDC -> ETH swap)
+- Test all hashing cases

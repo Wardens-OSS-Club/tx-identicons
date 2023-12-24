@@ -38,3 +38,9 @@ Hash(Target, Selector, HashedCalldata)
 // If the input is a struct, or an array apply the algorithm to each element
 // If the input is an address, take it's hash to the position
 // If the input is not an address, take the hash of the empty string
+
+# Contributing
+
+Check the TODO, create an issue saying you're working on it
+
+Send a PR
