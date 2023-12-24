@@ -75,5 +75,7 @@ function encodeFromParsed(target: string, selector: string, hashedInput: string)
   // We just keccak these 3 into one
   // Selector is correctly packed
   // Hashed input is already 32 bytes
+  
+  // TODO: This should be tested against a solidity reference implementation to make sure it's implemented properly
   return solidityKeccak256(["bytes32", "bytes4", "bytes32"], [hashAddress(target), selector, hashedInput])
 }
