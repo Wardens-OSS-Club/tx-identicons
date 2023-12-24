@@ -71,23 +71,6 @@ function encodeInput(input: ParamType, value: string | string[]) {
 // if it's not, then you ignore
 
 
-// Target
-
-// Selector
-
-// Data encoding (Recursive Encoding of every address)
-
-// Steps
-// For each input, Apply the Input Hashing Algorithm
-
-// If the input is an address, add it's hash to the position
-// If the input is not an address, take the hash of the 0 value
-// If the input is a struct, apply the algorithm to each element of the struct
-
-// Take the hash of the hashes you have identified
-
-// I need
-
 function encodeFromParsed(target: string, selector: string, hashedInput: string) {
   // We just keccak these 3 into one
   // Selector is correctly packed
