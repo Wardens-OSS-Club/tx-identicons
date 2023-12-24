@@ -25,19 +25,16 @@ https://www.svgviewer.dev/
 
 ## Algorithm
 
+An Identicon Hash is
+
 Hash(Target, Selector, HashedCalldata)
 
-// Target
 
-// Selector
-
-// Calldata encoding (Recursive Encoding of every address)
+### Calldata encoding 
 
 // Steps
-// For each input, Apply the Input Hashing Algorithm
+// For each input, Apply the Hash(input)
 
 // If the input is a struct, or an array apply the algorithm to each element
 // If the input is an address, take it's hash to the position
 // If the input is not an address, take the hash of the empty string
-
-// Take the hash of the hashes you have identified
