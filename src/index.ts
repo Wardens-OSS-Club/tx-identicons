@@ -1,27 +1,8 @@
+import { keccak256, solidityKeccak256 } from "ethers/lib/utils";
 import { toSvg } from "jdenticon";
 
-// From Ethers Encoded to Value
-// if is address, then you add to digest
-// if it's not, then you ignore
 
-
-
-// https://ethereum.org/en/developers/docs/data-structures-and-encoding/rlp/
-
-// Target
-
-// Selector
-
-// Data encoding (Recursive Encoding of every address)
-
-// Steps
-// For each input, Apply the Input Hashing Algorithm
-
-// If the input is an address, add it's hash to the position
-// If the input is not an address, take the hash of the 0 value
-// If the input is a struct, apply the algorithm to each element of the struct
-
-// Take the hash of the hashes you have identified
+// From Metamask to The whole thing
 
 
 // Representation
@@ -36,3 +17,11 @@ console.log(svgString);
 // This + a differ would be sufficient
 // Although a differ could just be applied to hashes
 // Meaning there is no perfect solution
+
+
+console.log(keccak256([])) // 0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470 // == ZERO_HASH
+console.log(solidityKeccak256(["address"], ["0x3Fa73f1E5d8A792C80F426fc8F84FBF7Ce9bBCAC"]))
+
+
+// TODO: Encoding
+https://github.com/ethers-io/ethers.js/issues/718
