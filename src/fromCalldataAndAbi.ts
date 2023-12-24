@@ -25,11 +25,19 @@ export default function fromTargetAndCalldataToHash(address: string, calldata: s
 
 
 function encodeInput(inputDefinition: ParamType, argument: any) {
-  if(inputDefinition.baseType == "tuple" || inputDefinition.baseType == "array") {
-    // Recursive operation
-    // For each etc...
+  /// RECURSIVE CASES ///
+  // For each etc...
+  // For Each of them we have to iterate
+  // So we gotta do more recursive calls
+  if(inputDefinition.baseType == "tuple") {
+    return argument.map() // TODO:
   }
 
+  if(inputDefinition.baseType == "array") {
+    return argument.map() // TODO:
+  }
+
+  /// BASE CASES ///
   if(inputDefinition.baseType == "address") {
     // This is an address, we hash
     return keccak256(argument)
