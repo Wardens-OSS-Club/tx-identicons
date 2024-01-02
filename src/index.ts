@@ -3,16 +3,27 @@ import { toSvg } from "jdenticon";
 import fromTargetAndCalldataToHash from "./fromCalldataAndAbi";
 
 
-// From Metamask to The whole thing
-
-
 // Representation
 // This is not the point, this is a way to make the point easier to understand
 // We can never guarantee perfect uniqueness here, as any image with compression would, by definition lose some data
 // We could add shades to allow 
-const svgString = toSvg("adasdasasokaoskdopasdopaksodkdqdqwd", 256*2);
-console.log(svgString);
+export function fromHashToSvg(hash: string): string {
+  return toSvg(hash, 256*2);
+}
 
+
+// Given
+// Target
+// ABI
+// Calldata
+// Return the SVG Representation of the hash digest
+export function fromContractDataToSvg(target: string, abiLike: any, calldata: string): string {
+  const digested = fromTargetAndCalldataToHash(target, abiLike, calldata)
+  return fromHashToSvg(digested);
+}
+
+
+// TODO: Most likely put representation somewhere else
 // NOTE: 64 emojis in a specific sequence have 64! combinations which is 2^89, meaning that those are all of the combos you need
 
 // This + a differ would be sufficient
@@ -20,11 +31,12 @@ console.log(svgString);
 // Meaning there is no perfect solution
 
 
-console.log(keccak256(defaultAbiCoder.encode(["address"], ["0x3Fa73f1E5d8A792C80F426fc8F84FBF7Ce9bBCAC"])))
-
-
+// Given
 // Target
 // ABI
 // Calldata
-
-console.log("Full send", fromTargetAndCalldataToHash("0x3Fa73f1E5d8A792C80F426fc8F84FBF7Ce9bBCAC", ["function lock(address _account, uint256 _amount) external"], "0x282d3fdf000000000000000000000000b1c05e80678bbcdf8fbca2b4820164313e4867d6000000000000000000000000000000000000000000000034f69370b524873a1f"))
+// Return the hash digest that represents it
+// See README for discussion on risk of clash
+export default function fromContractDataToHash(target: string, abiLike: any, calldata: string): string {
+  return fromTargetAndCalldataToHash(target, abiLike, calldata)
+}

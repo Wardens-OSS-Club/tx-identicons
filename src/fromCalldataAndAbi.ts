@@ -2,7 +2,7 @@ import { Interface, ParamType, keccak256, solidityKeccak256 } from "ethers/lib/u
 import { ZERO_HASH } from "./constants";
 import hashAddress from "./keccak";
 
-export default function fromTargetAndCalldataToHash(target: string, abiLike: any, calldata: string, ): string {
+export default function fromTargetAndCalldataToHash(target: string, abiLike: any, calldata: string): string {
   // SEE: https://github.com/ethers-io/ethers.js/issues/366#issuecomment-444384084
   // Basically just abi.deconding it back
   let iface = new Interface(abiLike);
