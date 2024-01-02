@@ -22,6 +22,12 @@ Paste into
 
 https://www.svgviewer.dev/
 
+## Emojis
+
+Each emoji is mapped to the value of a nibble (one hex digit)
+
+Once we have found 256 emojis that are distinct enough, we can cut the length to half and use one emoji for 2 nibbles
+
 
 ## Algorithm
 
