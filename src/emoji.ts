@@ -121,6 +121,3 @@ export default function fromHexStringToEmojiString(hash: string): string {
   const asNibblesNumbers = fromHexStringToNibbles(hash)
   return asNibblesNumbers.map(nibble => fromNibbleNumberToEmoji(nibble)).join("")
 }
-
-console.log(fromHexStringToNibbles("0x5ac989f52ea4c399343f6c0cf5a4810fc1bdac5773de37ca0cd0a8287f75a5c6"))
-console.log(fromHexStringToEmojis("0x5ac989f52ea4c399343f6c0cf5a4810fc1bdac5773de37ca0cd0a8287f75a5c6"))
