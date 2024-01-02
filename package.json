@@ -12,6 +12,7 @@
   "scripts": {
     "start": "ts-node src/demo.ts",
     "dev": "ts-node src/demo.ts",
+    "emoji": "ts-node src/emoji.ts",
     "build": "tsc",
     "test": "jest",
     "lint": "eslint src/. --ext ts --ext tsx --ext js",

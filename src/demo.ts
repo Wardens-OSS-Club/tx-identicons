@@ -1,6 +1,7 @@
 import { defaultAbiCoder, keccak256 } from "ethers/lib/utils";
 import { toSvg } from "jdenticon";
 import fromTargetAndCalldataToHash from "./fromCalldataAndAbi";
+import fromHexStringToEmojiString from "./emoji";
 
 
 // From Metamask to The whole thing
@@ -27,4 +28,7 @@ console.log(keccak256(defaultAbiCoder.encode(["address"], ["0x3Fa73f1E5d8A792C80
 // ABI
 // Calldata
 
-console.log("Full send", fromTargetAndCalldataToHash("0x3Fa73f1E5d8A792C80F426fc8F84FBF7Ce9bBCAC", ["function lock(address _account, uint256 _amount) external"], "0x282d3fdf000000000000000000000000b1c05e80678bbcdf8fbca2b4820164313e4867d6000000000000000000000000000000000000000000000034f69370b524873a1f"))
+const asDigest = fromTargetAndCalldataToHash("0x3Fa73f1E5d8A792C80F426fc8F84FBF7Ce9bBCAC", ["function lock(address _account, uint256 _amount) external"], "0x282d3fdf000000000000000000000000b1c05e80678bbcdf8fbca2b4820164313e4867d6000000000000000000000000000000000000000000000034f69370b524873a1f")
+
+console.log("From String to Hash", asDigest)
+console.log("From String to Emojis", fromHexStringToEmojiString(asDigest))
