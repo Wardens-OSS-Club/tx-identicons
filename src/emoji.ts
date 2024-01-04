@@ -3,6 +3,7 @@
 
 // Manually gone and looked at different shapes
 // Skipping emojis that look too similar
+// YES: I did review the emojis manually, please do send an issue if you think some are too similar!
 // NOTE: I could have searched way more
 // I have yet to go through https://emojipedia.org/objects and onwards 
 const ARBITRARY_LIST_OF_EMOJIS = [
