@@ -26,8 +26,11 @@ https://www.svgviewer.dev/
 
 Each emoji is mapped to the value of a nibble (one hex digit)
 
-Once we have found 256 emojis that are distinct enough, we can cut the length to half and use one emoji for 2 nibbles
+Since we have found 256 emojis, we can cut the length by half
 
+One address can be represented by 10 emojis
+
+One hash (32 bytes) can be represented by 16 emojis
 
 ## Algorithm
 
