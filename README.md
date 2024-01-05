@@ -28,9 +28,9 @@ Each emoji is mapped to the value of a nibble (one hex digit)
 
 Since we have found 256 emojis, we can cut the length by half
 
-One address can be represented by 10 emojis
+One address can be represented by 20 emojis
 
-One hash (32 bytes) can be represented by 16 emojis
+One hash (32 bytes) can be represented by 32 emojis
 
 ## Algorithm
 

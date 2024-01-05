@@ -311,6 +311,7 @@ function fromHexStringToNibbles(hash: string): number[] {
 
   let converted = []
   for(let i = 0; i < trimmed.length; i+=2) {
+    console.log("i", i)
     let charA = trimmed.charAt(i);
     let charB = trimmed.charAt(i + 1);
     let string = charA + charB // as string
